@@ -6,9 +6,9 @@ from threading import Lock
 app = Flask(__name__)
 
 FOG_NODES = [
-    "http://127.0.0.1:5001",
-    "http://127.0.0.1:5002",
-    "http://127.0.0.1:5003",
+    "http://172.20.10.5:5001",
+    "http://172.20.10.2:5002",
+    "http://172.20.10.6:5003",
 ]
 
 node_kpi = {node: None for node in FOG_NODES}

@@ -197,11 +197,11 @@ def download(filename):
 
 @app.route("/metrics")
 def metrics():
-    nodes =  [
-    "http://127.0.0.1:5001",
-    "http://127.0.0.1:5002",
-    "http://127.0.0.1:5003",
-]
+    nodes = [
+        "http://172.20.10.2:5001",
+        "http://172.20.10.3:5002",
+        "http://172.20.10.6:5003",
+    ]
     data = []
     for url in nodes:
         try:
