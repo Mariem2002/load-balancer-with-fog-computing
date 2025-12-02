@@ -36,7 +36,16 @@ HTML_PAGE = """
         th {background: linear-gradient(135deg,#667eea,#764ba2); color:white; padding:15px;}
         td, th {padding:12px; text-align:center; border-bottom:1px solid #eee;}
         tr:hover {background:#f8f9ff;}
-        .bar {height:24px; border-radius:12px; background:linear-gradient(90deg,#667eea,#764ba2); color:white; line-height:24px; font-weight:bold;}
+        .bar {
+            height:30px; 
+            border-radius:15px; 
+            background:linear-gradient(90deg,#667eea,#764ba2); 
+            color:white; 
+            line-height:30px; 
+            font-weight:bold; 
+            font-size:14px; 
+            text-align:center;
+        }
         #downloadBtn {display:none; background:linear-gradient(135deg,#11998e,#38ef7d); margin-top:20px;}
     </style>
 </head>
@@ -117,8 +126,11 @@ async function getMetrics() {
             if (n.error) {
                 tr.innerHTML = `<td>${n.port || n.node}</td><td colspan="3">Hors ligne</td>`;
             } else {
-                const cpuBar = `<div class="bar" style="width:${n.cpu_percent}%">${n.cpu_percent}%</div>`;
-                const ramBar = `<div class="bar" style="width:${n.ram_percent}%">${n.ram_percent}%</div>`;
+                const minWidth = 30; // largeur minimum pour petites valeurs
+                const cpuWidth = Math.max(n.cpu_percent, 8);
+                const ramWidth = Math.max(n.ram_percent, 8);
+                const cpuBar = `<div class="bar" style="width:${cpuWidth}%; min-width:${minWidth}px">${n.cpu_percent}%</div>`;
+                const ramBar = `<div class="bar" style="width:${ramWidth}%; min-width:${minWidth}px">${n.ram_percent}%</div>`;
                 tr.innerHTML = `<td>${n.port}</td><td>${cpuBar}</td><td>${ramBar}</td><td>${n.tasks_running}</td>`;
             }
             tbody.appendChild(tr);
@@ -162,13 +174,11 @@ def send_file():
         if os.path.exists(temp_path):
             os.remove(temp_path)
 
-    # Reconstruct REAL encrypted file
     encrypted_path = os.path.join(ENCRYPTED_FOLDER, filename + ".enc")
     with open(encrypted_path, "wb") as out:
         for chunk in sorted(result["results"], key=lambda x: x["chunk"]):
             out.write(bytes.fromhex(chunk["result"]))
 
-    # Save metadata (keys + nonces)
     meta_path = os.path.join(ENCRYPTED_FOLDER, filename + ".meta.json")
     with open(meta_path, "w") as mf:
         json.dump({"chunks": [
@@ -187,7 +197,11 @@ def download(filename):
 
 @app.route("/metrics")
 def metrics():
-    nodes = ["http://127.0.0.1:5001", "http://127.0.0.1:5002", "http://127.0.0.1:5003"]
+    nodes =  [
+    "http://127.0.0.1:5001",
+    "http://127.0.0.1:5002",
+    "http://127.0.0.1:5003",
+]
     data = []
     for url in nodes:
         try:
