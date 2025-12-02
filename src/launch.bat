@@ -3,22 +3,22 @@
 REM =============================
 REM Lancer les nœuds fog
 REM =============================
-start cmd /k "python src/fog_node.py"
-start cmd /k "python src/fog_node2.py"
-start cmd /k "python src/fog_node3.py"
+start cmd /k "python fog_node.py"
+start cmd /k "python fog_node2.py"
+start cmd /k "python fog_node3.py"
 
 REM =============================
 REM Choix de l'algorithme pour le load balancer
 REM =============================
-start cmd /k "python src/load_balancer_algo.py"
-start cmd /k "python src/load_balancer_random.py"
-start cmd /k "python src/load_balancer_rr.py"
+start cmd /k "python load_balancer_algo.py"
+start cmd /k "python load_balancer_random.py"
+start cmd /k "python load_balancer_rr.py"
 
 
 REM =============================
 REM Lancer le client (interface HTML)
 REM =============================
-start cmd /k "python src/client.py"
+start cmd /k "python client.py"
 
 REM =============================
 REM Ajouter une charge CPU locale pour rendre les nœuds plus sollicités
