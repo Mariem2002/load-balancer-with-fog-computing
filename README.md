@@ -3,7 +3,7 @@
 ## Implemented Features
 
 **Load Balancer**  
-Random traffic distribution across local fog nodes.
+Random traffic distribution across distributed fog nodes.
 
 **Monitoring & Observability**  
 Prometheus integrated for metrics collection.  
