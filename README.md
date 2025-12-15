@@ -1,19 +1,30 @@
-First commit : - Load balancer working randomly with local fog nodes.
-               - Prometheus integration to visualize with grafana. Run      prometheus --config.file=prometheus.yml     after adding prometheus to path. For more information : https://grafana.com/docs/grafana/latest/datasources/prometheus/configure/   
-               - Web interface to simulate client (HTML, CSS, JS)
-               ✅ 1. Activate the virtual environment (.venv)
+# Project Setup & Core Features
 
+## Implemented Features
 
+**Load Balancer**  
+Random traffic distribution across local fog nodes.
 
-.\.venv\Scripts\Activate
+**Monitoring & Observability**  
+Prometheus integrated for metrics collection.  
+Metrics are visualized using Grafana dashboards.
 
+**Client Simulation Interface**  
+Web-based interface built with Flask Framework to simulate client requests.
 
+## Getting Started
 
-✅ 2. Install everything from requirements.txt
+### 1. Activate the Virtual Environment
+Make sure you are inside the project directory, then activate the virtual environment:
 
-Make sure you're inside your project folder, then run:
+### 2. Install Project Dependencies
+Install all required Python packages using:
 
 pip install -r requirements.txt
-            
 
+### 3. Run Prometheus
+Ensure Prometheus is added to your system PATH, then start it with:
+prometheus --config.file=prometheus.yml
+For detailed configuration of Prometheus as a Grafana data source, refer to:
+https://grafana.com/docs/grafana/latest/datasources/prometheus/configure/
             
