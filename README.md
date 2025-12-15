@@ -19,12 +19,13 @@ Make sure you are inside the project directory, then activate the virtual enviro
 
 ### 2. Install Project Dependencies
 Install all required Python packages using:
-
+```
 pip install -r requirements.txt
+```
 
 ### 3. Run Prometheus
 Ensure Prometheus is added to your system PATH, then start it with:
 prometheus --config.file=prometheus.yml
 For detailed configuration of Prometheus as a Grafana data source, refer to:
-https://grafana.com/docs/grafana/latest/datasources/prometheus/configure/
+https://grafana.com/docs/grafana/latest/datasources/prometheus/configure/ 
             
